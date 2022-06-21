@@ -1,7 +1,8 @@
 {{>header}}
 import 'dart:async';
 
-{{#includeLibraryTemplate}}api/imports{{/includeLibraryTemplate}}
+{{#useBuiltValue}}import 'package:built_value/serializer.dart';{{/useBuiltValue}}
+{{#useFreezed}}import 'dart:convert';{{/useFreezed}}
 import 'package:dio/dio.dart';
 
 {{#operations}}
@@ -84,14 +85,15 @@ class {{classname}} {
 
     final _queryParameters = <String, dynamic>{
       {{#queryParams}}
-      {{^required}}{{^isNullable}}if ({{{paramName}}} != null) {{/isNullable}}{{/required}}r'{{baseName}}': {{#includeLibraryTemplate}}api/query_param{{/includeLibraryTemplate}},
+      {{^required}}{{^isNullable}}if ({{{paramName}}} != null) {{/isNullable}}{{/required}}r'{{baseName}}': {{#useBuiltValue}}{{>serialization/built_value/query_param}}{{/useBuiltValue}}{{#useFreezed}}{{{paramName}}}{{/useFreezed}},
       {{/queryParams}}
     };{{/hasQueryParams}}{{#hasBodyOrFormParams}}
 
     dynamic _bodyData;
 
     try {
-{{#includeLibraryTemplate}}api/serialize{{/includeLibraryTemplate}}
+{{#useBuiltValue}}{{>serialization/built_value/serialize}}{{/useBuiltValue}}
+{{#useFreezed}}{{>serialization/freezed/serialize}}{{/useFreezed}}
     } catch(error, stackTrace) {
       throw DioError(
          requestOptions: _options.compose(
@@ -118,7 +120,8 @@ class {{classname}} {
     {{{returnType}}} _responseData;
 
     try {
-{{#includeLibraryTemplate}}api/deserialize{{/includeLibraryTemplate}}
+{{#useBuiltValue}}{{>serialization/built_value/deserialize}}{{/useBuiltValue}}
+{{#useFreezed}}{{>serialization/freezed/deserialize}}{{/useFreezed}}
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,

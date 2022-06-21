@@ -8,3 +8,9 @@ analyzer:
   exclude:
     - test/*.dart{{#useJsonSerializable}}
     - lib/src/model/*.g.dart{{/useJsonSerializable}}
+    - test/*.dart{{#useFreezed}}
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore
+  {{/useFreezed}}

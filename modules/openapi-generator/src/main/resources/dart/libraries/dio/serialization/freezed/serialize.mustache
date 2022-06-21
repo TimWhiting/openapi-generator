@@ -1,0 +1,8 @@
+{{#bodyParam}}
+{{#isPrimitiveType}}
+_bodyData = {{paramName}};
+{{/isPrimitiveType}}
+{{^isPrimitiveType}}
+_bodyData = {{^required}}{{paramName}} == null ? null : {{/required}}jsonEncode({{paramName}});
+{{/isPrimitiveType}}
+{{/bodyParam}}

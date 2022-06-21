@@ -5,10 +5,12 @@ import 'package:{{pubName}}/{{pubName}}.dart';
 
 // tests for {{{classname}}}
 void main() {
+  {{#useBuiltValue}}
   {{^isEnum}}
   {{! Due to required vars without default value we can not create a full instance here }}
 {{#includeLibraryTemplate}}test_instance{{/includeLibraryTemplate}}
   {{/isEnum}}
+  {{/useBuiltValue}}
 
   group({{{classname}}}, () {
     {{#vars}}
