@@ -35,7 +35,6 @@
 		"editor.suggestSelection": "first",
 		"editor.semanticHighlighting.enabled": true,
 		"explorer.confirmDelete": true,
-
 		"files.autoSave": "onFocusChange",
 		"files.exclude": {
 			"**/.classpath": true,
@@ -45,24 +44,20 @@
 		},
 		"files.trimFinalNewlines": false,
 		"files.trimTrailingWhitespace": true,
-
 		"task.saveBeforeRun": "always",
-
 		"java.autobuild.enabled": false,
 		"java.completion.enabled": true,
 		"java.completion.guessMethodArguments": true,
 		"java.completion.maxResults": 5,
 		"java.format.onType.enabled": true,
-
 		"java.referencesCodeLens.enabled": true,
 		"java.saveActions.organizeImports": true,
 		"java.showBuildStatusOnStart.enabled": true,
-
 		"java.dependency.autoRefresh": true,
 		"java.dependency.refreshDelay": 3000,
 		"java.format.enabled": true,
-
 		"maven.pomfile.autoUpdateEffectivePOM": true,
+		"ros.distro": "noetic",
 	},
 	"extensions": {
 		"recommendations": [
@@ -72,7 +67,6 @@
 			"visualstudioexptteam.vscodeintellicode",
 			"42crunch.vscode-openapi",
 			"mermade.openapi-lint"
-
 		]
 	}
 }
